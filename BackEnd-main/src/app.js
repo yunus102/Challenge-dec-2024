@@ -12,11 +12,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 app.use(cors({
-<<<<<<< HEAD
     origin: "https://challenge-dec-2024-1.onrender.com",
-=======
-    origin: "challenge-dec-2024-1.onrender.com",
->>>>>>> 2d343b015a07fbe9db134755aa180f8724619b54
     credentials: true
 }))
 
