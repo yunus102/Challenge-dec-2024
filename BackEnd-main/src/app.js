@@ -22,7 +22,7 @@ app.use(express.static("public"))
 app.use(cookieParser())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'FrontEnd-main', 'build')))
+app.use(express.static(path.join(__dirname, 'frontend', 'dist')))
 
 
 //routes import
@@ -37,8 +37,8 @@ app.use('/api/v1/favourite', userRouter)
 app.use("/api/v1/roc", userRouter)
 
 app.get("/", (req, res)=>{
-    app.use(express.static(path.resolve(__dirname,'FrontEnd-main', "build")))
-    res.sendFile(path.resolve(__dirname,'FrontEnd-main', "build", "index.html"))
+    app.use(express.static(path.resolve(__dirname,'frontend', "dist")))
+    res.sendFile(path.resolve(__dirname,'frontend', "dist", "index.html"))
 
 })
 export { app }
