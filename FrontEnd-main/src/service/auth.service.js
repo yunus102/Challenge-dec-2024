@@ -50,6 +50,7 @@ export class AuthService {
     async getEmails(){
         try {
             const response = await axios.get(`https://challenge-dec-2024.onrender.com/api/v1/emails/all`);
+            console.log(response.data)
             return response.data
         } catch (error) {
             throw error
