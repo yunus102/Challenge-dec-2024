@@ -5,7 +5,7 @@ import axios from "axios";
 export class AuthService {
     async createAccount({ data, navigate }){
         try {
-            const response = await axios.post(`https://backend-1-fgxb.onrender.com/api/v1/user/register`, data);
+            const response = await axios.post(`https://challenge-dec-2024.onrender.com/api/v1/user/register`, data);
             if (response.data.statusCode === 200) {    
                 localStorage.setItem('accessToken', response.data.data.accessToken);
                 localStorage.setItem('refreshToken', response.data.data.refreshToken)
@@ -19,7 +19,7 @@ export class AuthService {
     async login({data, navigate}){
         try {
             console.log(data)
-            const response = await axios.post(`https://backend-1-fgxb.onrender.com/api/v1/user/login`, data);
+            const response = await axios.post(`https://challenge-dec-2024.onrender.com/api/v1/user/login`, data);
             if (response.data.statusCode === 200) {
                 localStorage.setItem('accessToken', response.data.data.accessToken);
                 localStorage.setItem('refreshToken', response.data.data)
@@ -49,7 +49,8 @@ export class AuthService {
 
     async getEmails(){
         try {
-            const response = await axios.get(`https://backend-1-fgxb.onrender.com/api/v1/emails/all`);
+            const response = await axios.get(`https://challenge-dec-2024.onrender.com/api/v1/emails/all`);
+            console.log(response.data)
             return response.data
         } catch (error) {
             throw error
@@ -58,7 +59,7 @@ export class AuthService {
 
     async fetchEmailDetail(id){
         try {
-            const response = await axios.get(`https://backend-1-fgxb.onrender.com/api/v1/email/detail/${id}`)
+            const response = await axios.get(`https://challenge-dec-2024.onrender.com/api/v1/email/detail/${id}`)
             return response.data
         } catch (error) {
             console.log(error)
@@ -68,7 +69,7 @@ export class AuthService {
 
     async toggleFavorite(id){
         try {
-            const response = await axios.get(`https://backend-1-fgxb.onrender.com/api/v1/favourite/${id}`)
+            const response = await axios.get(`https://challenge-dec-2024.onrender.com/api/v1/favourite/${id}`)
             console.log(response.data.favourite)
 
             return response.data
