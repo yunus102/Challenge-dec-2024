@@ -12,7 +12,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 app.use(cors({
-    origin: "https://challenge-dec-2024-1.onrender.com/",
+    origin: "https://challenge-dec-2024-1.onrender.com",
     credentials: true
 }))
 
@@ -22,7 +22,7 @@ app.use(express.static("public"))
 app.use(cookieParser())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'FrontEnd', 'build')))
+app.use(express.static(path.join(__dirname, 'FrontEnd-main', 'build')))
 
 
 //routes import
