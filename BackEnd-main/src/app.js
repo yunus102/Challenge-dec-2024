@@ -22,7 +22,7 @@ app.use(express.static("public"))
 app.use(cookieParser())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'frontend', 'dist')))
+app.use(express.static(path.join(__dirname, 'FrontEnd', 'build')))
 
 
 //routes import
