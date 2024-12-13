@@ -37,8 +37,8 @@ app.use('/api/v1/favourite', userRouter)
 app.use("/api/v1/roc", userRouter)
 
 app.get("/", (req, res)=>{
-    app.use(express.static(path.resolve(__dirname,'frontend', "dist")))
-    res.sendFile(path.resolve(__dirname,'frontend', "dist", "index.html"))
+    app.use(express.static(path.resolve(__dirname,'FrontEnd-main', "build")))
+    res.sendFile(path.resolve(__dirname,'FrontEnd-main', "build", "index.html"))
 
 })
 export { app }
