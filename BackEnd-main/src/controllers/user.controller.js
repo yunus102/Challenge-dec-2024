@@ -155,7 +155,6 @@ const logoutUser = asyncHandler(async(req, res) => {
 })
 
 const getCurrentUser = asyncHandler(async(req, res) => {
-    console.log(req.user)
     return res.json(req.user)
 })
 
@@ -206,7 +205,6 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
     } catch (error) {
         throw new ApiError(401, error?.message || "Invalid refresh token")
     }
-
 })
 
 const fetchEmails = asyncHandler(async (_, res)=>{
@@ -313,14 +311,23 @@ try {
     const id = req.params.id
     const {favourite, avatar} = await Email.findOne({id})    
 
+        // Find email and update 'read' field if it's false
+        await Email.findOneAndUpdate(
+            { id, read: false }, // Only update if `read` is false
+            { $set: { read: true, unread: false } }, // Update `read` to true, `unread` to false
+        );
+
     const data = {
         id: req.params.id,
         avatar,
         readableDate,
         subject,
         favourite,
-        emailBody
+        emailBody,
+    
     }
+
+
     return res.status(200).json(new ApiResponse(200, data, "Email details fetched successfully")) 
 } catch (error) {
     throw new ApiError(500, "Something went wrong while fetching email detail")
