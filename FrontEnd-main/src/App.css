@@ -40,3 +40,16 @@
 .read-the-docs {
   color: #888;
 }
+.back-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+}
