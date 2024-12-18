@@ -103,6 +103,7 @@ function AllEmail() {
                             className={`p-2 m-0 cursor-pointer  ${mail.read ? 'bg-gray-200' : ''} ${selectedEmailId === mail.id ? 'border-2 border-red-400' : ''}`} 
                             onClick={() => handleEmailClick(mail.id)} // Pass email ID on click
                         >
+                            {console.log(mail.read)}
                             <Card 
                                 id={mail.id}
                                 from={mail.from}
