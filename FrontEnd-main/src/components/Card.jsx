@@ -3,8 +3,8 @@ import React from 'react';
 function Card({ id, from, avatar, subject, description, date, favourite, read, unread }) {
   return (
     <div className='flex items-center justify-center w-full '>
-        {console.log(read)}
-        <div className={`${read ? 'bg-gray-200' : ''} bg-white shadow-md rounded-lg p-6 w-full max-w-2xl `}> {/* Adjusted width */}
+        {console.log(avatar)}
+        <div className={`bg-white shadow-md rounded-lg p-6 w-full max-w-2xl ${read ? 'bg-gray-200' : ''}`}> {/* Adjusted width */}
             <div className="flex items-center mb-4 ">
                 <div className="bg-red-500 text-white rounded-full w-12 h-12 flex items-center justify-center text-lg font-bold">
                     <img src={avatar} alt="" />
