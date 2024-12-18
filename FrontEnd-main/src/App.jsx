@@ -34,18 +34,19 @@ function App() {
       <div className='w-full block'>
 
 
-        {/* Back button */}
-        console.log(location.pathname)
-        {location.pathname !== '/' && (
-          <button
-            onClick={handleBack}
-            className="back-button"
-          >
-            Back
-          </button>
-        )}
+
  
         <main>
+          {/* Back button */}
+          console.log(location.pathname)
+          {location.pathname !== '/' && (
+            <button
+              onClick={handleBack}
+              className="back-button"
+            >
+              Back
+            </button>
+          )}
           <Outlet />
         </main>
       </div>
