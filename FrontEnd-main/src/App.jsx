@@ -12,7 +12,6 @@ function App() {
   const location = useLocation();
   const navigate = useNavigate();
   
-  {location.pathname === '/' && <Header />}
 
   useEffect(() => {
     authService.getCurrentUser()
@@ -33,10 +32,10 @@ function App() {
   return !loading ? (
     <div className='w-full min-h-screen m-0 flex flex-wrap content-between'>
       <div className='w-full block'>
-        {/* Show the header conditionally */}
-        {location.pathname === '/' && <Header />}
+
 
         {/* Back button */}
+        console.log(location.pathname)
         {location.pathname !== '/' && (
           <button
             onClick={handleBack}
