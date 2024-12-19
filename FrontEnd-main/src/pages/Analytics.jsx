@@ -26,7 +26,7 @@ function Analytics() {
     const uniqueGenders = [...new Set(data.map(item => item.Gender))];
 
     return (
-        <div className="flex flex-col w-full h-screen p-4 space-y-4">
+        <div className="flex flex-row w-full space-x-4">
             <FilterComponent
                 selectedAge={selectedAge}
                 setSelectedAge={setSelectedAge}
@@ -39,10 +39,10 @@ function Analytics() {
                 uniqueAges={uniqueAges}
                 uniqueGenders={uniqueGenders}
             />
-            <div className="w-full h-auto">
+            <div className="flex-1 h-auto">
                 <DataChart data={data} filters={{ selectedAge, selectedGender, startDate, endDate }} /> {/* Bar Chart */}
             </div>
-            <div className="w-full h-auto  m-10">
+            <div className="flex-1 h-auto">
                 <LineChart data={data} filters={{ selectedAge, selectedGender, startDate, endDate }} /> {/* Line Chart */}
             </div>
         </div>

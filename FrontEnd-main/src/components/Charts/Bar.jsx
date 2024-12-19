@@ -9,6 +9,7 @@ import {
     Tooltip,
     Legend
 } from 'chart.js';
+import Cookies from 'js-cookie';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -28,6 +29,14 @@ function DataChart({ data }) {
     const [selectedGender, setSelectedGender] = useState(''); // State for selected gender
     const [startDate, setStartDate] = useState(null); // State for start date
     const [endDate, setEndDate] = useState(null); // State for end date
+
+    // Sync state changes to cookies
+    useEffect(() => {
+        Cookies.set('barSelectedAge', selectedAge, { expires: 7 });
+        Cookies.set('barSelectedGender', selectedGender, { expires: 7 });
+        Cookies.set('barStartDate', startDate ? startDate.toISOString() : '', { expires: 7 });
+        Cookies.set('barEndDate', endDate ? endDate.toISOString() : '', { expires: 7 });
+    }, [selectedAge, selectedGender, startDate, endDate]);
 
     // Get unique ages and genders for the dropdowns
     const uniqueAges = [...new Set(data.map(item => item.Age))];
