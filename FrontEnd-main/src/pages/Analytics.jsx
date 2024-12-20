@@ -20,10 +20,19 @@ function Analytics() {
     const [selectedGender, setSelectedGender] = useState('');
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
+    const [showNotification, setShowNotification] = useState(false);
 
     // Get unique ages and genders for the dropdowns
     const uniqueAges = [...new Set(data.map(item => item.Age))];
     const uniqueGenders = [...new Set(data.map(item => item.Gender))];
+
+    const handleShare = () => {
+        const currentUrl = window.location.href; // Get the current URL
+        navigator.clipboard.writeText(currentUrl).then(() => {
+            setShowNotification(true);
+            setTimeout(() => setShowNotification(false), 3000); // Hide the notification after 3 seconds
+        });
+    };
 
     return (
         <div className="flex flex-row w-full space-x-4">
@@ -39,6 +48,19 @@ function Analytics() {
                 uniqueAges={uniqueAges}
                 uniqueGenders={uniqueGenders}
             />
+                        <div className="flex justify-center mt-4">
+                <button
+                    onClick={handleShare}
+                    className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                >
+                    Share
+                </button>
+            </div>
+            {showNotification && (
+                <div className="fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded shadow">
+                    URL copied!
+                </div>
+            )}
             <div className="flex-1 h-auto">
                 <DataChart data={data} filters={{ selectedAge, selectedGender, startDate, endDate }} /> {/* Bar Chart */}
             </div>
